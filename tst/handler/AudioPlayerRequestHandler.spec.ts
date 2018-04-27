@@ -16,7 +16,7 @@
 'use strict';
 
 import {AttributesManagerFactory, HandlerInput, ResponseFactory} from 'ask-sdk-core';
-import {Response} from 'ask-sdk-model';
+import {RequestEnvelope, Response} from 'ask-sdk-model';
 import {expect} from 'chai';
 import {AudioPlayerRequestHandler} from '../../lib/handler/AudioPlayerRequestHandler';
 import {JsonProvider} from '../mock/JsonProvider';
@@ -50,10 +50,11 @@ describe('AudioPlayerRequestHandler', () => {
     const handler = new TestHandler();
 
     it('should handle AudioPlayer PlaybackFailed correctly', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
@@ -76,10 +77,11 @@ describe('AudioPlayerRequestHandler', () => {
     });
 
     it('should handle AudioPlayer PlaybackFinished correctly', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
@@ -102,10 +104,11 @@ describe('AudioPlayerRequestHandler', () => {
     });
 
     it('should handle AudioPlayer PlaybackNearlyFinished correctly', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
@@ -128,10 +131,11 @@ describe('AudioPlayerRequestHandler', () => {
     });
 
     it('should handle AudioPlayer PlaybackStarted correctly', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
@@ -154,10 +158,11 @@ describe('AudioPlayerRequestHandler', () => {
     });
 
     it('should handle AudioPlayer PlaybackStopped correctly', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };

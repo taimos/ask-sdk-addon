@@ -1,5 +1,6 @@
 /*
- * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright (c) 2018. Taimos GmbH http://www.taimos.de
+ *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
  * A copy of the License is located at
@@ -9,74 +10,89 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
  */
 
 'use strict';
 
-import {
-    Intent,
-    RequestEnvelope,
-    Slot,
-} from 'ask-sdk-model';
+import {Intent, IntentRequest, RequestEnvelope, Slot} from 'ask-sdk-model';
 
 export const JsonProvider = {
-    requestEnvelope() : RequestEnvelope {
+    requestEnvelope(appId : string, userId : string, deviceId? : string) : RequestEnvelope {
         return {
-            context : {
-                AudioPlayer : null,
-                Display : null,
-                System : {
-                    apiAccessToken : null,
-                    apiEndpoint : null,
-                    application : {
-                        applicationId : null,
+            context: {
+                AudioPlayer: {
+                    playerActivity: 'IDLE',
+                },
+                Display: null,
+                System: {
+                    apiAccessToken: null,
+                    apiEndpoint: 'https://api.amazonalexa.com/',
+                    application: {
+                        applicationId: appId,
                     },
-                    device : {
-                        deviceId : null,
-                        supportedInterfaces : null,
+                    device: {
+                        deviceId: deviceId || 'amzn1.ask.device.VOID',
+                        supportedInterfaces: null,
                     },
-                    user : {
-                        userId : null,
+                    user: {
+                        userId: null,
                     },
                 },
             },
             request: {
                 type: 'LaunchRequest',
                 requestId: null,
-                timestamp : null,
+                timestamp: null,
                 locale: null,
-
             },
             session: {
                 application: {
-                    applicationId: null,
+                    applicationId: appId,
                 },
                 attributes: null,
                 new: true,
-                sessionId: null,
+                sessionId: 'SessionId.00000000-0000-0000-0000-000000000000',
                 user: {
                     accessToken: null,
                     permissions: {
                         consentToken: null,
                     },
-                    userId: null,
+                    userId,
                 },
             },
             version: '1.0',
         };
     },
-    intent() : Intent {
+    intentRequest(intent : Intent) : IntentRequest {
         return {
-            confirmationStatus : null,
-            name : null,
-            slots : null,
+            type: 'IntentRequest',
+            requestId: null,
+            timestamp: null,
+            locale: null,
+            dialogState: null,
+            intent,
         };
     },
-    slot() : Slot {
+    intent(name : string, ...slots : Slot[]) : Intent {
+        let requestSlots;
+        if (slots) {
+            requestSlots = {};
+            slots.forEach((slot) => {
+                requestSlots[slot.name] = slot;
+            });
+        }
         return {
-            confirmationStatus : null,
-            name : null,
-            value : null,
+            confirmationStatus: null,
+            name,
+            slots: requestSlots,
+        };
+    },
+    slot(name : string, value : string) : Slot {
+        return {
+            confirmationStatus: null,
+            name,
+            value,
             resolutions: null,
         };
     },

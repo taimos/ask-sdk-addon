@@ -16,7 +16,7 @@
 'use strict';
 
 import {AttributesManagerFactory, HandlerInput, ResponseFactory} from 'ask-sdk-core';
-import {Response} from 'ask-sdk-model';
+import {RequestEnvelope, Response} from 'ask-sdk-model';
 import {expect} from 'chai';
 import {NamedIntentRequestHandler} from '../../lib/handler/NamedIntentRequestHandler';
 import {JsonProvider} from '../mock/JsonProvider';
@@ -45,10 +45,11 @@ describe('NamedIntentRequestHandler', () => {
 
     it('should return correct canHandle value for launchHandler on LaunchRequest', () => {
         const launchHandler = new LaunchRequestHandler();
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const handlerInput : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
@@ -59,10 +60,11 @@ describe('NamedIntentRequestHandler', () => {
     const intentHandler = new SomeIntentRequestHandler();
 
     it('should return correct canHandle value for intentHandler on LaunchRequest', () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
@@ -70,62 +72,41 @@ describe('NamedIntentRequestHandler', () => {
     });
 
     it('should return correct canHandle value for intentHandler on SomeIntent', () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
-        input.requestEnvelope.request = {
-            type: 'IntentRequest',
-            requestId: null,
-            timestamp: null,
-            locale: null,
-            dialogState: null,
-            intent: JsonProvider.intent(),
-        };
-        input.requestEnvelope.request.intent.name = 'SomeIntent';
+        input.requestEnvelope.request = JsonProvider.intentRequest(JsonProvider.intent('SomeIntent'));
         expect(intentHandler.canHandle(input)).equal(true);
     });
 
     it('should return correct canHandle value for intentHandler on FoobarIntent', () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
-        input.requestEnvelope.request = {
-            type: 'IntentRequest',
-            requestId: null,
-            timestamp: null,
-            locale: null,
-            dialogState: null,
-            intent: JsonProvider.intent(),
-        };
-        input.requestEnvelope.request.intent.name = 'FoobarIntent';
+        input.requestEnvelope.request = JsonProvider.intentRequest(JsonProvider.intent('FoobarIntent'));
         expect(intentHandler.canHandle(input)).equal(true);
     });
 
     it('should return correct canHandle value for intentHandler on OtherIntent', () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
         const input : HandlerInput = {
-            requestEnvelope: JsonProvider.requestEnvelope(),
+            requestEnvelope,
             attributesManager: AttributesManagerFactory.init({
-                requestEnvelope: JsonProvider.requestEnvelope(),
+                requestEnvelope,
             }),
             responseBuilder: ResponseFactory.init(),
         };
-        input.requestEnvelope.request = {
-            type: 'IntentRequest',
-            requestId: null,
-            timestamp: null,
-            locale: null,
-            dialogState: null,
-            intent: JsonProvider.intent(),
-        };
-        input.requestEnvelope.request.intent.name = 'OtherIntent';
+        input.requestEnvelope.request = JsonProvider.intentRequest(JsonProvider.intent('OtherIntent'));
         expect(intentHandler.canHandle(input)).equal(false);
     });
 
