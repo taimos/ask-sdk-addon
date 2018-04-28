@@ -89,3 +89,19 @@ Use the SlotHelper to get slot values or entity resolutions from slots.
 Create an instance of the SlotHelper with `new SlotHelper(requestEnvelope)`.
 
 You can now call `getValue` or `resolveFirstValue` to get appropriate slot values.
+
+```javascript
+import {SlotHelper} from 'ask-sdk-addon';
+
+  async handle({requestEnvelope}) {
+    const slotHelper = new SlotHelper(requestEnvelope);
+
+    let attr = slotHelper.resolveFirstValue('attribute');
+    console.log(`Resolution Id: ${attr.id}`);
+
+    let value = slotHelper.getValue('attribute');
+    console.log(`Slot Value: ${value}`);
+
+    // ... more code
+  }
+```
