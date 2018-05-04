@@ -27,6 +27,12 @@ export class SlotHelper {
         this.requestEnvelope = requestEnvelope;
     }
 
+    /**
+     * Resolve the Value, containing text and entity id, of the given slot
+     * @param {string} slotName the slot to resolve
+     * @param {string} authority (Optional) the authority to get the value from. If none is specified it uses the first one found
+     * @return {slu.entityresolution.Value}
+     */
     public resolveFirstValue(slotName : string, authority? : string) : slu.entityresolution.Value {
         const request : IntentRequest = <IntentRequest> this.requestEnvelope.request;
         const slot : Slot = request.intent.slots[slotName];
@@ -53,12 +59,23 @@ export class SlotHelper {
         }
     }
 
+    /**
+     * Get the value of the given slot
+     * @param {string} slotName the slot to resolve
+     * @return {string}
+     */
     public getValue(slotName : string) : string {
         const request : IntentRequest = <IntentRequest> this.requestEnvelope.request;
         const slot : Slot = request.intent.slots[slotName];
         return slot ? slot.value : undefined;
     }
 
+    /**
+     * Create the appropriate authority for the given skill and slot type
+     * @param {string} slotType the value type for the authority
+     * @param {string} appId (Optional) the app id to build the authority from. If none is specified used the current app id
+     * @return {string}
+     */
     public getAuthority(slotType : string, appId? : string) : string {
         const app = appId ? appId : this.requestEnvelope.session.application.applicationId;
         return `amzn1.er-authority.echo-sdk.${app}.${slotType}`;

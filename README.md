@@ -105,3 +105,23 @@ import {SlotHelper} from 'ask-sdk-addon';
     // ... more code
   }
 ```
+
+#### ResponseHelper
+
+Use the ResponseHelper to add additional features to skill responses.
+
+Create an instance of the ResponseHelper with `new ResponseHelper(responseBuilder)`.
+
+You can now call the additional methods for enhanced features.
+
+```javascript
+import {ResponseHelper} from 'ask-sdk-addon';
+
+  async handle({requestEnvelope, responseBuilder}) {
+    const responseHelper = new ResponseHelper(responseBuilder);
+
+    responseHelper.speakOneOf(['OutputSpeech 1', 'OutputSpeech 2']);
+
+    // ... more code
+  }
+```
