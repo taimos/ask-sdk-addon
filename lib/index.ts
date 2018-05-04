@@ -18,3 +18,4 @@
 export {NamedIntentRequestHandler} from './handler/NamedIntentRequestHandler';
 export {AudioPlayerRequestHandler} from './handler/AudioPlayerRequestHandler';
 export {SlotHelper} from './helper/SlotHelper';
+export {ResponseHelper} from './helper/ResponseHelper';
