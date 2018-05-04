@@ -37,17 +37,17 @@ export class SlotHelper {
             let value : Value = undefined;
             slot.resolutions.resolutionsPerAuthority.forEach((resolution) => {
                 if (resolution.authority === authority && resolution.values && resolution.values.length > 0 &&
-                  resolution.values[0] && resolution.values[0].value) {
+                    resolution.values[0] && resolution.values[0].value) {
                     value = resolution.values[0].value;
                 }
             });
             return value;
         }
         if (slot.resolutions.resolutionsPerAuthority[0] &&
-          slot.resolutions.resolutionsPerAuthority[0].values &&
-          slot.resolutions.resolutionsPerAuthority[0].values.length > 0 &&
-          slot.resolutions.resolutionsPerAuthority[0].values[0] &&
-          slot.resolutions.resolutionsPerAuthority[0].values[0].value
+            slot.resolutions.resolutionsPerAuthority[0].values &&
+            slot.resolutions.resolutionsPerAuthority[0].values.length > 0 &&
+            slot.resolutions.resolutionsPerAuthority[0].values[0] &&
+            slot.resolutions.resolutionsPerAuthority[0].values[0].value
         ) {
             return slot.resolutions.resolutionsPerAuthority[0].values[0].value;
         }

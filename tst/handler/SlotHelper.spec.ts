@@ -15,6 +15,7 @@
 
 import {RequestEnvelope} from 'ask-sdk-model';
 import {expect} from 'chai';
+import {describe, it} from 'mocha';
 import {SlotHelper} from '../../lib/helper/SlotHelper';
 import {JsonProvider} from '../mock/JsonProvider';
 
