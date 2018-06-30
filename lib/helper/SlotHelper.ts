@@ -71,6 +71,20 @@ export class SlotHelper {
     }
 
     /**
+     * Get the confirmation status of the given slot or the intent in general
+     * @param {string} slotName the slot to check; if no slot is given the confirmation status of the intent is returned
+     * @return {boolean} true if the slot/intent is confirmed; false otherwise
+     */
+    public isConfirmed(slotName? : string) : boolean {
+        const request : IntentRequest = <IntentRequest> this.requestEnvelope.request;
+        if (slotName) {
+            const slot : Slot = request.intent.slots[slotName];
+            return slot && slot.confirmationStatus === 'CONFIRMED';
+        }
+        return request.intent.confirmationStatus === 'CONFIRMED';
+    }
+
+    /**
      * Create the appropriate authority for the given skill and slot type
      * @param {string} slotType the value type for the authority
      * @param {string} appId (Optional) the app id to build the authority from. If none is specified used the current app id

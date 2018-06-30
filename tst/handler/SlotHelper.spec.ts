@@ -79,4 +79,40 @@ describe('SlotHelper', () => {
         expect(helper.resolveFirstValue('test', helper.getAuthority('OtherType'))).to.equal(undefined);
     });
 
+    it('should get the correct slot confirmation (false)', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
+        const slot = JsonProvider.slot('test', 'foobar');
+        slot.confirmationStatus = 'DENIED';
+        requestEnvelope.request = JsonProvider.intentRequest(JsonProvider.intent('SomeIntent', slot));
+
+        expect(new SlotHelper(requestEnvelope).isConfirmed('test')).to.equal(false);
+    });
+
+    it('should get the correct slot confirmation (true)', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
+        const slot = JsonProvider.slot('test', 'foobar');
+        slot.confirmationStatus = 'CONFIRMED';
+        requestEnvelope.request = JsonProvider.intentRequest(JsonProvider.intent('SomeIntent', slot));
+
+        expect(new SlotHelper(requestEnvelope).isConfirmed('test')).to.equal(true);
+    });
+
+    it('should get the correct intent confirmation (false)', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
+        const intent = JsonProvider.intent('SomeIntent');
+        intent.confirmationStatus = 'DENIED';
+        requestEnvelope.request = JsonProvider.intentRequest(intent);
+
+        expect(new SlotHelper(requestEnvelope).isConfirmed()).to.equal(false);
+    });
+
+    it('should get the correct intent confirmation (true)', async () => {
+        const requestEnvelope : RequestEnvelope = JsonProvider.requestEnvelope('app', 'user');
+        const intent = JsonProvider.intent('SomeIntent');
+        intent.confirmationStatus = 'CONFIRMED';
+        requestEnvelope.request = JsonProvider.intentRequest(intent);
+
+        expect(new SlotHelper(requestEnvelope).isConfirmed()).to.equal(true);
+    });
+
 });

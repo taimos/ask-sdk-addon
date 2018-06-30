@@ -106,6 +106,8 @@ import {SlotHelper} from 'ask-sdk-addon';
   }
 ```
 
+Using the `isConfirmed` method you can get the confirmation status of the intent and slots.
+
 #### ResponseHelper
 
 Use the ResponseHelper to add additional features to skill responses.
