@@ -18,7 +18,7 @@ intent name instead of implementing the `canHandle` method.
 
 The following RequestHandler will handle requests for the intents `SomeIntent` and `FoobarIntent`.
 
-```javascript
+```typescript
 import {NamedIntentRequestHandler} from 'ask-sdk-addon';
 
 class SomeIntentRequestHandler extends NamedIntentRequestHandler {
@@ -34,7 +34,7 @@ class SomeIntentRequestHandler extends NamedIntentRequestHandler {
 
 The following RequestHandler will handle LaunchRequests.
 
-```javascript
+```typescript
 import {NamedIntentRequestHandler} from 'ask-sdk-addon';
 
 class LaunchRequestHandler extends NamedIntentRequestHandler {
@@ -52,7 +52,7 @@ class LaunchRequestHandler extends NamedIntentRequestHandler {
 
 You can extend the `AudioPlayerRequestHandler` and implement the methods to facilitate the processing of AudioPlayer events.
 
-```javascript
+```typescript
 import {AudioPlayerRequestHandler} from 'ask-sdk-addon';
 
 class TestHandler extends AudioPlayerRequestHandler {
@@ -90,20 +90,20 @@ Create an instance of the SlotHelper with `new SlotHelper(requestEnvelope)`.
 
 You can now call `getValue` or `resolveFirstValue` to get appropriate slot values.
 
-```javascript
+```typescript
 import {SlotHelper} from 'ask-sdk-addon';
 
-  async handle({requestEnvelope}) {
-    const slotHelper = new SlotHelper(requestEnvelope);
-
-    let attr = slotHelper.resolveFirstValue('attribute');
-    console.log(`Resolution Id: ${attr.id}`);
-
-    let value = slotHelper.getValue('attribute');
-    console.log(`Slot Value: ${value}`);
-
-    // ... more code
-  }
+    async handle({requestEnvelope}) {
+        const slotHelper = new SlotHelper(requestEnvelope);
+        
+        let attr = slotHelper.resolveFirstValue('attribute');
+        console.log(`Resolution Id: ${attr.id}`);
+        
+        let value = slotHelper.getValue('attribute');
+        console.log(`Slot Value: ${value}`);
+        
+        // ... more code
+    }
 ```
 
 Using the `isConfirmed` method you can get the confirmation status of the intent and slots.
@@ -116,14 +116,32 @@ Create an instance of the ResponseHelper with `new ResponseHelper(responseBuilde
 
 You can now call the additional methods for enhanced features.
 
-```javascript
+```typescript
 import {ResponseHelper} from 'ask-sdk-addon';
 
-  async handle({requestEnvelope, responseBuilder}) {
-    const responseHelper = new ResponseHelper(responseBuilder);
+    async handle({requestEnvelope, responseBuilder}) {
+        const responseHelper = new ResponseHelper(responseBuilder);
+        
+        responseHelper.speakOneOf(['OutputSpeech 1', 'OutputSpeech 2']);
+        
+        // ... more code
+    }
+```
 
-    responseHelper.speakOneOf(['OutputSpeech 1', 'OutputSpeech 2']);
+#### DisplayTemplateBuilder
 
-    // ... more code
-  }
+Use the DisplayTemplateBuilder to ease the creation of RenderTemplates for display devices like Echo Show and Echo Spot.
+
+Create an instance of the Builder with `new DisplayTemplateBuilder({type: 'BodyTemplate2'})`.
+
+```typescript
+import {DisplayTemplateBuilder} from 'ask-sdk-addon';
+
+if (DisplayTemplateBuilder.isDisplaySupported(handlerInput.requestEnvelope)) {
+    const builder : DisplayTemplateBuilder = new DisplayTemplateBuilder({type: 'BodyTemplate2'});
+    builder.withToken('superToken').withBackButton().withImage(myImageUrl).withTitle('Template Title');
+    builder.withPrimaryRichText('<i>Some Text:</i> Lorem ipsum');
+    handlerInput.responseBuilder.addRenderTemplateDirective(builder.getTemplate());
+}
+
 ```
