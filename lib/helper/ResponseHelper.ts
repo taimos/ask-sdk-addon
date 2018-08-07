@@ -44,6 +44,16 @@ export class ResponseHelper {
     }
 
     /**
+     * Has Alexa add one of the provided hints for display devices
+     * @param {string[]} hints
+     * @returns {ResponseHelper}
+     */
+    public hintOneOf(hints : string[]) : ResponseHelper {
+        this.responseBuilder.addHintDirective(hints[Math.floor(Math.random() * hints.length)]);
+        return this;
+    }
+
+    /**
      * Returns the response object of the underlying ResponseBuilder
      * @returns {Response}
      */

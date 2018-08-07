@@ -13,15 +13,16 @@
  */
 
 import {ResponseBuilder, ResponseFactory} from 'ask-sdk-core';
-import {ui} from 'ask-sdk-model';
+import {Directive, interfaces, ui} from 'ask-sdk-model';
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
 import {ResponseHelper} from '../../lib/helper/ResponseHelper';
 import SsmlOutputSpeech = ui.SsmlOutputSpeech;
+import HintDirective = interfaces.display.HintDirective;
 
 describe('ResponseHelper', () => {
 
-    it('should build random response with with array as outputSpeech', () => {
+    it('should build random response with array as outputSpeech', () => {
         const responseBuilder : ResponseBuilder = ResponseFactory.init();
         const helper : ResponseHelper = new ResponseHelper(responseBuilder);
 
@@ -32,7 +33,7 @@ describe('ResponseHelper', () => {
         expect((outputSpeech as SsmlOutputSpeech).ssml).to.oneOf(expectResponse);
     });
 
-    it('should build random response with with array as reprompt', () => {
+    it('should build random response with array as reprompt', () => {
         const responseBuilder : ResponseBuilder = ResponseFactory.init();
         const helper : ResponseHelper = new ResponseHelper(responseBuilder);
 
@@ -41,6 +42,20 @@ describe('ResponseHelper', () => {
 
         const {reprompt} = helper.repromptOneOf(repromptCandidates).getResponse();
         expect((reprompt.outputSpeech as SsmlOutputSpeech).ssml).to.oneOf(expectResponse);
+    });
+
+    it('should build random response with array as hints', () => {
+        const responseBuilder : ResponseBuilder = ResponseFactory.init();
+        const helper : ResponseHelper = new ResponseHelper(responseBuilder);
+
+        const hintCandidates = ['ask Foo for advice', 'ask Foo for a random number'];
+
+        const {directives} = helper.hintOneOf(hintCandidates).getResponse();
+
+        const hints : Directive[] = directives.filter((value : Directive) => value.type === 'Hint');
+        expect(hints).to.be.an('array').that.has.lengthOf(1);
+        const hintDirective : HintDirective = hints[0] as HintDirective;
+        expect(hintDirective.hint.text).to.be.oneOf(hintCandidates);
     });
 
 });
