@@ -31,6 +31,9 @@ export class DisplayTemplateBuilder {
      * @param requestEnvelope
      */
     public static escapeDisplayXml(unsafe : string) : string {
+        if (!unsafe) {
+            return '';
+        }
         return unsafe.replace(/[&<>"'\\]/g, (m) => {
             switch (m) {
                 case '&':
