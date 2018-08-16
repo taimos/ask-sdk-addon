@@ -145,3 +145,27 @@ if (DisplayTemplateBuilder.isDisplaySupported(handlerInput.requestEnvelope)) {
 }
 
 ```
+
+### Interceptor
+
+#### LogRequestInterceptor
+
+This interceptor logs all incoming requests to the console
+
+```typescript
+import {SkillBuilders} from 'ask-sdk';
+import {LogRequestInterceptor} from 'ask-sdk-addon';
+
+SkillBuilders.custom().addRequestInterceptors(new LogRequestInterceptor());
+```
+
+#### PersistAttributesInterceptor
+
+This interceptor saves the persistent attributes to the data store
+
+```typescript
+import {SkillBuilders} from 'ask-sdk';
+import {PersistAttributesInterceptor} from 'ask-sdk-addon';
+
+SkillBuilders.custom().addResponseInterceptors(new PersistAttributesInterceptor());
+```

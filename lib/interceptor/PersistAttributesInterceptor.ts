@@ -10,15 +10,15 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
  */
 
-'use strict';
+import {HandlerInput, ResponseInterceptor} from 'ask-sdk-core';
+import {Response} from 'ask-sdk-model';
 
-export {NamedIntentRequestHandler} from './handler/NamedIntentRequestHandler';
-export {AudioPlayerRequestHandler} from './handler/AudioPlayerRequestHandler';
-export {SlotHelper} from './helper/SlotHelper';
-export {ResponseHelper} from './helper/ResponseHelper';
-export {DisplayTemplateBuilder} from './helper/DisplayTemplateBuilder';
-export {LogRequestInterceptor} from './interceptor/LogRequestInterceptor';
-export {PersistAttributesInterceptor} from './interceptor/PersistAttributesInterceptor';
+export class PersistAttributesInterceptor implements ResponseInterceptor {
+
+    public async process(handlerInput : HandlerInput, response? : Response) : Promise<void> {
+        return handlerInput.attributesManager.savePersistentAttributes();
+    }
+
+}
