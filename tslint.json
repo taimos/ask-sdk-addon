@@ -67,11 +67,6 @@
       true,
       1
     ],
-    "no-console": [
-      true,
-      "log",
-      "error"
-    ],
     "no-construct": true,
     "no-debugger": true,
     "no-default-export": true,
