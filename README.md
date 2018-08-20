@@ -146,6 +146,18 @@ if (DisplayTemplateBuilder.isDisplaySupported(handlerInput.requestEnvelope)) {
 
 ```
 
+#### InterfaceHelper
+
+The InterfaceHelper helps you determine which interfaces are supported by the calling device.
+
+```typescript
+import {InterfaceHelper} from 'ask-sdk-addon';
+
+InterfaceHelper.isAudioPlayerSupported(requestEnvelope);
+InterfaceHelper.isVideoPlayerSupported(requestEnvelope);
+InterfaceHelper.isDisplaySupported(requestEnvelope);
+```
+
 ### Interceptor
 
 #### LogRequestInterceptor

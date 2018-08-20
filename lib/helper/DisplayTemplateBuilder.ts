@@ -15,6 +15,7 @@
 import {interfaces, RequestEnvelope, Response} from 'ask-sdk-model';
 import Template = interfaces.display.Template;
 import ListItem = interfaces.display.ListItem;
+import {InterfaceHelper} from './InterfaceHelper';
 
 export class DisplayTemplateBuilder {
 
@@ -23,7 +24,7 @@ export class DisplayTemplateBuilder {
      * @param requestEnvelope
      */
     public static isDisplaySupported(requestEnvelope : RequestEnvelope) : boolean {
-        return requestEnvelope.context.System.device.supportedInterfaces.Display !== undefined;
+        return InterfaceHelper.isDisplaySupported(requestEnvelope);
     }
 
     /**
