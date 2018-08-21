@@ -1,6 +1,6 @@
 {
   "name": "ask-sdk-addon",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Addons for Alexa Skill Kit SDK v2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
