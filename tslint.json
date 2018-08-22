@@ -43,7 +43,7 @@
     "label-position": true,
     "max-classes-per-file": [
       true,
-      2
+      5
     ],
     "max-line-length": [
       true,

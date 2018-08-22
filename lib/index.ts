@@ -22,4 +22,5 @@ export {ResponseHelper} from './helper/ResponseHelper';
 export {InterfaceHelper} from './helper/InterfaceHelper';
 export {DisplayTemplateBuilder} from './helper/DisplayTemplateBuilder';
 export {LogRequestInterceptor} from './interceptor/LogRequestInterceptor';
+export {DistanceUnitsInterceptor, TemperatureUnitInterceptor, TimeZoneInterceptor} from './interceptor/ProfileInterceptor';
 export {PersistAttributesInterceptor} from './interceptor/PersistAttributesInterceptor';

@@ -181,3 +181,21 @@ import {PersistAttributesInterceptor} from 'ask-sdk-addon';
 
 SkillBuilders.custom().addResponseInterceptors(new PersistAttributesInterceptor());
 ```
+
+#### ProfileInterceptor
+
+These interceptors call the user profile service and populate request attributes
+
+```typescript
+import {SkillBuilders} from 'ask-sdk';
+import {ProfileInterceptor} from 'ask-sdk-addon';
+
+SkillBuilders.custom().addRequestInterceptors(new TimeZoneInterceptor());
+SkillBuilders.custom().addRequestInterceptors(new DistanceUnitsInterceptor());
+SkillBuilders.custom().addRequestInterceptors(new TemperatureUnitInterceptor());
+
+handlerInput.attributesManager.getRequestAttributes().timeZone;
+handlerInput.attributesManager.getRequestAttributes().temperatureUnit;
+handlerInput.attributesManager.getRequestAttributes().distanceUnits;
+
+``` 
