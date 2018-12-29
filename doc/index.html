@@ -1,0 +1,329 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ask-sdk-addon</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ask-sdk-addon</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> ask-sdk-addon</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="addon-package-for-the-alexa-skills-kit-sdk">Addon package for the Alexa Skills Kit SDK</h1>
+				<p><a href="https://travis-ci.org/taimos/ask-sdk-addon"><img src="https://travis-ci.org/taimos/ask-sdk-addon.svg?branch=master" alt="Build Status"></a>
+				<a href="https://badge.fury.io/js/ask-sdk-addon"><img src="https://badge.fury.io/js/ask-sdk-addon.svg" alt="npm version"></a></p>
+				<h2 id="installation">Installation</h2>
+				<p><code>npm install ask-sdk-addon</code></p>
+				<h2 id="features">Features</h2>
+				<h3 id="handlers">Handlers</h3>
+				<h4 id="namedintentrequesthandler">NamedIntentRequestHandler</h4>
+				<p>When creation RequestHandler you can extend the <code>NamedIntentRequestHandler</code> and specify the
+				intent name instead of implementing the <code>canHandle</code> method.</p>
+				<p>The following RequestHandler will handle requests for the intents <code>SomeIntent</code> and <code>FoobarIntent</code>.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+<span class="hljs-keyword">class</span> SomeIntentRequestHandler <span class="hljs-keyword">extends</span> NamedIntentRequestHandler {
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">'SomeIntent'</span>, <span class="hljs-string">'FoobarIntent'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+}
+</code></pre>
+				<p>The following RequestHandler will handle LaunchRequests.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+<span class="hljs-keyword">class</span> LaunchRequestHandler <span class="hljs-keyword">extends</span> NamedIntentRequestHandler {
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">'LaunchRequest'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+}
+</code></pre>
+				<h4 id="audioplayerrequesthandler">AudioPlayerRequestHandler</h4>
+				<p>You can extend the <code>AudioPlayerRequestHandler</code> and implement the methods to facilitate the processing of AudioPlayer events.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {AudioPlayerRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+<span class="hljs-keyword">class</span> TestHandler <span class="hljs-keyword">extends</span> AudioPlayerRequestHandler {
+
+    <span class="hljs-keyword">public</span> handlePlaybackFailed(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+         <span class="hljs-comment">// Handle event</span>
+    }
+
+    <span class="hljs-keyword">public</span> handlePlaybackFinished(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+         <span class="hljs-comment">// Handle event</span>
+    }
+
+    <span class="hljs-keyword">public</span> handlePlaybackNearlyFinished(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+         <span class="hljs-comment">// Handle event</span>
+    }
+
+    <span class="hljs-keyword">public</span> handlePlaybackStarted(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+         <span class="hljs-comment">// Handle event</span>
+    }
+
+    <span class="hljs-keyword">public</span> handlePlaybackStopped(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+         <span class="hljs-comment">// Handle event</span>
+    }
+
+}
+</code></pre>
+				<h3 id="helper">Helper</h3>
+				<h4 id="slothelper">SlotHelper</h4>
+				<p>Use the SlotHelper to get slot values or entity resolutions from slots.</p>
+				<p>Create an instance of the SlotHelper with <code>new SlotHelper(requestEnvelope)</code>.</p>
+				<p>You can now call <code>getValue</code> or <code>resolveFirstValue</code> to get appropriate slot values.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SlotHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+    <span class="hljs-keyword">async</span> handle({requestEnvelope}) {
+        <span class="hljs-keyword">const</span> slotHelper = <span class="hljs-keyword">new</span> SlotHelper(requestEnvelope);
+
+        <span class="hljs-keyword">let</span> attr = slotHelper.resolveFirstValue(<span class="hljs-string">'attribute'</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Resolution Id: <span class="hljs-subst">${attr.id}</span>`</span>);
+
+        <span class="hljs-keyword">let</span> value = slotHelper.getValue(<span class="hljs-string">'attribute'</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Slot Value: <span class="hljs-subst">${value}</span>`</span>);
+
+        <span class="hljs-comment">// ... more code</span>
+    }
+</code></pre>
+				<p>Using the <code>isConfirmed</code> method you can get the confirmation status of the intent and slots.</p>
+				<h4 id="responsehelper">ResponseHelper</h4>
+				<p>Use the ResponseHelper to add additional features to skill responses.</p>
+				<p>Create an instance of the ResponseHelper with <code>new ResponseHelper(responseBuilder)</code>.</p>
+				<p>You can now call the additional methods for enhanced features.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {ResponseHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+    <span class="hljs-keyword">async</span> handle({requestEnvelope, responseBuilder}) {
+        <span class="hljs-keyword">const</span> responseHelper = <span class="hljs-keyword">new</span> ResponseHelper(responseBuilder);
+
+        responseHelper.speakOneOf([<span class="hljs-string">'OutputSpeech 1'</span>, <span class="hljs-string">'OutputSpeech 2'</span>]);
+
+        <span class="hljs-comment">// ... more code</span>
+    }
+</code></pre>
+				<h4 id="displaytemplatebuilder">DisplayTemplateBuilder</h4>
+				<p>Use the DisplayTemplateBuilder to ease the creation of RenderTemplates for display devices like Echo Show and Echo Spot.</p>
+				<p>Create an instance of the Builder with <code>new DisplayTemplateBuilder({type: &#39;BodyTemplate2&#39;})</code>.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {DisplayTemplateBuilder} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+<span class="hljs-keyword">if</span> (DisplayTemplateBuilder.isDisplaySupported(handlerInput.requestEnvelope)) {
+    <span class="hljs-keyword">const</span> builder : DisplayTemplateBuilder = <span class="hljs-keyword">new</span> DisplayTemplateBuilder({<span class="hljs-keyword">type</span>: <span class="hljs-string">'BodyTemplate2'</span>});
+    builder.withToken(<span class="hljs-string">'superToken'</span>).withBackButton().withImage(myImageUrl).withTitle(<span class="hljs-string">'Template Title'</span>);
+    builder.withPrimaryRichText(<span class="hljs-string">'&lt;i&gt;Some Text:&lt;/i&gt; Lorem ipsum'</span>);
+    handlerInput.responseBuilder.addRenderTemplateDirective(builder.getTemplate());
+}
+
+</code></pre>
+				<h4 id="interfacehelper">InterfaceHelper</h4>
+				<p>The InterfaceHelper helps you determine which interfaces are supported by the calling device.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {InterfaceHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+InterfaceHelper.isAudioPlayerSupported(requestEnvelope);
+InterfaceHelper.isVideoPlayerSupported(requestEnvelope);
+InterfaceHelper.isDisplaySupported(requestEnvelope);
+</code></pre>
+				<h3 id="interceptor">Interceptor</h3>
+				<h4 id="logrequestinterceptor">LogRequestInterceptor</h4>
+				<p>This interceptor logs all incoming requests to the console</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
+<span class="hljs-keyword">import</span> {LogRequestInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> LogRequestInterceptor());
+</code></pre>
+				<h4 id="persistattributesinterceptor">PersistAttributesInterceptor</h4>
+				<p>This interceptor saves the persistent attributes to the data store</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
+<span class="hljs-keyword">import</span> {PersistAttributesInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+SkillBuilders.custom().addResponseInterceptors(<span class="hljs-keyword">new</span> PersistAttributesInterceptor());
+</code></pre>
+				<h4 id="profileinterceptor">ProfileInterceptor</h4>
+				<p>These interceptors call the user profile service and populate request attributes</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
+<span class="hljs-keyword">import</span> {ProfileInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> TimeZoneInterceptor());
+SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> DistanceUnitsInterceptor());
+SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> TemperatureUnitInterceptor());
+
+handlerInput.attributesManager.getRequestAttributes().timeZone;
+handlerInput.attributesManager.getRequestAttributes().temperatureUnit;
+handlerInput.attributesManager.getRequestAttributes().distanceUnits;
+
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/audioplayerrequesthandler.html" class="tsd-kind-icon">Audio<wbr>Player<wbr>Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/displaytemplatebuilder.html" class="tsd-kind-icon">Display<wbr>Template<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/distanceunitsinterceptor.html" class="tsd-kind-icon">Distance<wbr>Units<wbr>Interceptor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/interfacehelper.html" class="tsd-kind-icon">Interface<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/logrequestinterceptor.html" class="tsd-kind-icon">Log<wbr>Request<wbr>Interceptor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/namedintentrequesthandler.html" class="tsd-kind-icon">Named<wbr>Intent<wbr>Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/persistattributesinterceptor.html" class="tsd-kind-icon">Persist<wbr>Attributes<wbr>Interceptor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/responsehelper.html" class="tsd-kind-icon">Response<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/slothelper.html" class="tsd-kind-icon">Slot<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/temperatureunitinterceptor.html" class="tsd-kind-icon">Temperature<wbr>Unit<wbr>Interceptor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/timezoneinterceptor.html" class="tsd-kind-icon">Time<wbr>Zone<wbr>Interceptor</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
