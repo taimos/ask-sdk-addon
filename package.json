@@ -13,7 +13,7 @@
         "build": "npm-run-all clean compile lint test doc",
         "preversion": "npm-run-all clean lint test",
         "version": "npm run build && git add -A",
-        "postversion": "npm publish"
+        "postversion": "git push && npm publish"
     },
     "keywords": [
         "Alexa",
