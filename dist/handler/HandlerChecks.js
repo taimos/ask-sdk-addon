@@ -1,5 +1,6 @@
+"use strict";
 /*
- * Copyright (c) 2018. Taimos GmbH http://www.taimos.de
+ * Copyright (c) 2019. Taimos GmbH http://www.taimos.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -10,18 +11,15 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
  */
-'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-const HandlerChecks_1 = require("./HandlerChecks");
-class NamedIntentRequestHandler {
-    constructor(...intentNames) {
-        this.intentNames = intentNames;
+class HandlerChecks {
+    static isIntentRequest(handlerInput, ...intentNames) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest' && intentNames.indexOf(handlerInput.requestEnvelope.request.intent.name) >= 0;
     }
-    canHandle(handlerInput) {
-        return HandlerChecks_1.HandlerChecks.isIntentRequest(handlerInput, ...this.intentNames) || HandlerChecks_1.HandlerChecks.isType(handlerInput, ...this.intentNames);
+    static isType(handlerInput, ...requestTypes) {
+        return requestTypes.indexOf(handlerInput.requestEnvelope.request.type) >= 0;
     }
 }
-exports.NamedIntentRequestHandler = NamedIntentRequestHandler;
-//# sourceMappingURL=NamedIntentRequestHandler.js.map
+exports.HandlerChecks = HandlerChecks;
+//# sourceMappingURL=HandlerChecks.js.map

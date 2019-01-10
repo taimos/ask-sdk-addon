@@ -17,6 +17,7 @@
 
 import {HandlerInput, RequestHandler} from 'ask-sdk-core';
 import {Response} from 'ask-sdk-model';
+import {HandlerChecks} from './HandlerChecks';
 
 export abstract class NamedIntentRequestHandler implements RequestHandler {
 
@@ -27,11 +28,7 @@ export abstract class NamedIntentRequestHandler implements RequestHandler {
     }
 
     public canHandle(handlerInput : HandlerInput) : Promise<boolean> | boolean {
-        if (handlerInput.requestEnvelope.request.type === 'IntentRequest') {
-            return this.intentNames.indexOf(handlerInput.requestEnvelope.request.intent.name) >= 0;
-        }
-
-        return this.intentNames.indexOf(handlerInput.requestEnvelope.request.type) >= 0;
+        return HandlerChecks.isIntentRequest(handlerInput, ...this.intentNames) || HandlerChecks.isType(handlerInput, ...this.intentNames);
     }
 
     public abstract handle(handlerInput : HandlerInput) : Promise<Response> | Response;
