@@ -19,7 +19,7 @@ import {AttributesManagerFactory, HandlerInput, ResponseFactory} from 'ask-sdk-c
 import {RequestEnvelope, Response} from 'ask-sdk-model';
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import {NamedIntentRequestHandler} from '../../lib/handler/NamedIntentRequestHandler';
+import {NamedIntentRequestHandler} from '../../lib';
 import {JsonProvider} from '../mock/JsonProvider';
 
 describe('NamedIntentRequestHandler', () => {

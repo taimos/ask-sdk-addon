@@ -16,7 +16,7 @@ import {ResponseBuilder, ResponseFactory} from 'ask-sdk-core';
 import {Directive, interfaces, ui} from 'ask-sdk-model';
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import {ResponseHelper} from '../../lib/helper/ResponseHelper';
+import {ResponseHelper} from '../../lib';
 import SsmlOutputSpeech = ui.SsmlOutputSpeech;
 import HintDirective = interfaces.display.HintDirective;
 

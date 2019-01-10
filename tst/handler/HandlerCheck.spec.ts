@@ -15,7 +15,7 @@
 import {RequestEnvelope} from 'ask-sdk-model';
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import {HandlerChecks} from '../../lib/handler/HandlerChecks';
+import {HandlerChecks} from '../../lib';
 import {JsonProvider} from '../mock/JsonProvider';
 
 describe('HandlerCheck', () => {

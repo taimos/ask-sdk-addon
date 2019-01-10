@@ -1,5 +1,7 @@
 export { NamedIntentRequestHandler } from './handler/NamedIntentRequestHandler';
 export { AudioPlayerRequestHandler } from './handler/AudioPlayerRequestHandler';
+export { APLUserEventRequestHandler } from './handler/APLUserEventRequestHandler';
+export { HandlerChecks } from './handler/HandlerChecks';
 export { SlotHelper } from './helper/SlotHelper';
 export { ResponseHelper } from './helper/ResponseHelper';
 export { InterfaceHelper } from './helper/InterfaceHelper';
