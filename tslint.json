@@ -21,8 +21,26 @@
     "ban-comma-operator": true,
     "ban-types": [
       true,
-      ["Object", "Use {} instead."],
-      ["String", "Use string instead."]
+      [
+        "Object",
+        "Avoid using the `Object` type. Did you mean `object`?"
+      ],
+      [
+        "Function",
+        "Avoid using the `Function` type. Prefer a specific function type, like `() => void`, or use `ts.AnyFunction`."
+      ],
+      [
+        "Boolean",
+        "Avoid using the `Boolean` type. Did you mean `boolean`?"
+      ],
+      [
+        "Number",
+        "Avoid using the `Number` type. Did you mean `number`?"
+      ],
+      [
+        "String",
+        "Avoid using the `String` type. Did you mean `string`?"
+      ]
     ],
     "binary-expression-operand-order": true,
     "class-name": true,
@@ -41,10 +59,6 @@
     "interface-over-type-literal": false,
     "jsdoc-format": true,
     "label-position": true,
-    "max-classes-per-file": [
-      true,
-      5
-    ],
     "max-line-length": [
       true,
       250
@@ -94,7 +108,6 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unsafe-finally": true,
-    "no-unused-expression": true,
     "no-var-keyword": true,
     "no-var-requires": true,
     "object-literal-key-quotes": [
@@ -195,8 +208,7 @@
       "check-decl",
       "check-operator",
       "check-separator",
-      "check-type",
-      "check-typecast"
+      "check-type"
     ]
   }
 }
