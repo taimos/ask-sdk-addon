@@ -1,5 +1,7 @@
-import { HandlerInput } from 'ask-sdk-core';
+import { RequestEnvelope } from 'ask-sdk-model';
 export declare class HandlerChecks {
-    static isIntentRequest(handlerInput: HandlerInput, ...intentNames: string[]): boolean;
-    static isType(handlerInput: HandlerInput, ...requestTypes: string[]): boolean;
+    static isIntentRequest(requestEnvelope: RequestEnvelope, ...intentNames: string[]): boolean;
+    static isType(requestEnvelope: RequestEnvelope, ...requestTypes: string[]): boolean;
+    static isAPLUserEvent(requestEnvelope: RequestEnvelope, argumentValidation: (args: string[]) => boolean): boolean;
+    static isAPLUserEventWithArguments(requestEnvelope: RequestEnvelope, ...args: string[]): boolean;
 }

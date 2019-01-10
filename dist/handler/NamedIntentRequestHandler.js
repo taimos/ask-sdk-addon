@@ -20,7 +20,7 @@ class NamedIntentRequestHandler {
         this.intentNames = intentNames;
     }
     canHandle(handlerInput) {
-        return HandlerChecks_1.HandlerChecks.isIntentRequest(handlerInput, ...this.intentNames) || HandlerChecks_1.HandlerChecks.isType(handlerInput, ...this.intentNames);
+        return HandlerChecks_1.HandlerChecks.isIntentRequest(handlerInput.requestEnvelope, ...this.intentNames) || HandlerChecks_1.HandlerChecks.isType(handlerInput.requestEnvelope, ...this.intentNames);
     }
 }
 exports.NamedIntentRequestHandler = NamedIntentRequestHandler;

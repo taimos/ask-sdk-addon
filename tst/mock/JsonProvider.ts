@@ -36,7 +36,7 @@ export const JsonProvider = {
                         supportedInterfaces: null,
                     },
                     user: {
-                        userId: null,
+                        userId,
                     },
                 },
             },

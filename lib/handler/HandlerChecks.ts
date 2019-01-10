@@ -12,16 +12,32 @@
  * permissions and limitations under the License.
  */
 
-import {HandlerInput} from 'ask-sdk-core';
+import {RequestEnvelope} from 'ask-sdk-model';
 
 export class HandlerChecks {
 
-    public static isIntentRequest(handlerInput : HandlerInput, ...intentNames : string[]) : boolean {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest' && intentNames.indexOf(handlerInput.requestEnvelope.request.intent.name) >= 0;
+    public static isIntentRequest(requestEnvelope : RequestEnvelope, ...intentNames : string[]) : boolean {
+        return requestEnvelope.request.type === 'IntentRequest' && intentNames.indexOf(requestEnvelope.request.intent.name) >= 0;
     }
 
-    public static isType(handlerInput : HandlerInput, ...requestTypes : string[]) : boolean {
-        return requestTypes.indexOf(handlerInput.requestEnvelope.request.type) >= 0;
+    public static isType(requestEnvelope : RequestEnvelope, ...requestTypes : string[]) : boolean {
+        return requestTypes.indexOf(requestEnvelope.request.type) >= 0;
+    }
+
+    public static isAPLUserEvent(requestEnvelope : RequestEnvelope, argumentValidation : (args : string[]) => boolean) : boolean {
+        return requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent' && argumentValidation(requestEnvelope.request.arguments);
+    }
+
+    public static isAPLUserEventWithArguments(requestEnvelope : RequestEnvelope, ...args : string[]) : boolean {
+        return this.isAPLUserEvent(requestEnvelope, (realArgs) => {
+            if (args === realArgs) { return true; }
+            if (realArgs == null || args == null) { return false; }
+            if (realArgs.length !== args.length) { return false; }
+            for (let i = 0; i < args.length; ++i) {
+                if (args[i] !== realArgs[i]) { return false; }
+            }
+            return true;
+        });
     }
 
 }

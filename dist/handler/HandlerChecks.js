@@ -14,11 +14,33 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 class HandlerChecks {
-    static isIntentRequest(handlerInput, ...intentNames) {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest' && intentNames.indexOf(handlerInput.requestEnvelope.request.intent.name) >= 0;
+    static isIntentRequest(requestEnvelope, ...intentNames) {
+        return requestEnvelope.request.type === 'IntentRequest' && intentNames.indexOf(requestEnvelope.request.intent.name) >= 0;
     }
-    static isType(handlerInput, ...requestTypes) {
-        return requestTypes.indexOf(handlerInput.requestEnvelope.request.type) >= 0;
+    static isType(requestEnvelope, ...requestTypes) {
+        return requestTypes.indexOf(requestEnvelope.request.type) >= 0;
+    }
+    static isAPLUserEvent(requestEnvelope, argumentValidation) {
+        return requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent' && argumentValidation(requestEnvelope.request.arguments);
+    }
+    static isAPLUserEventWithArguments(requestEnvelope, ...args) {
+        return this.isAPLUserEvent(requestEnvelope, (realArgs) => {
+            if (args === realArgs) {
+                return true;
+            }
+            if (realArgs == null || args == null) {
+                return false;
+            }
+            if (realArgs.length !== args.length) {
+                return false;
+            }
+            for (let i = 0; i < args.length; ++i) {
+                if (args[i] !== realArgs[i]) {
+                    return false;
+                }
+            }
+            return true;
+        });
     }
 }
 exports.HandlerChecks = HandlerChecks;

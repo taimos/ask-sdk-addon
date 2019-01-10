@@ -15,4 +15,9 @@ export declare class InterfaceHelper {
      * @param requestEnvelope
      */
     static isDisplaySupported(requestEnvelope: RequestEnvelope): boolean;
+    /**
+     * Check if APL is supported by calling device
+     * @param requestEnvelope
+     */
+    static isAPLSupported(requestEnvelope: RequestEnvelope): boolean;
 }

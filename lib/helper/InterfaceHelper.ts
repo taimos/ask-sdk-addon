@@ -40,4 +40,12 @@ export class InterfaceHelper {
         return requestEnvelope.context.System.device.supportedInterfaces.Display !== undefined;
     }
 
+    /**
+     * Check if APL is supported by calling device
+     * @param requestEnvelope
+     */
+    public static isAPLSupported(requestEnvelope : RequestEnvelope) : boolean {
+        return requestEnvelope.context.System.device.supportedInterfaces['Alexa.Presentation.APL'] !== undefined;
+    }
+
 }

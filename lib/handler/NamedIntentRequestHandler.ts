@@ -28,7 +28,7 @@ export abstract class NamedIntentRequestHandler implements RequestHandler {
     }
 
     public canHandle(handlerInput : HandlerInput) : Promise<boolean> | boolean {
-        return HandlerChecks.isIntentRequest(handlerInput, ...this.intentNames) || HandlerChecks.isType(handlerInput, ...this.intentNames);
+        return HandlerChecks.isIntentRequest(handlerInput.requestEnvelope, ...this.intentNames) || HandlerChecks.isType(handlerInput.requestEnvelope, ...this.intentNames);
     }
 
     public abstract handle(handlerInput : HandlerInput) : Promise<Response> | Response;
