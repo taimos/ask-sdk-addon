@@ -12,7 +12,9 @@
  * permissions and limitations under the License.
  */
 
+import {HandlerInput} from 'ask-sdk-core';
 import {RequestEnvelope} from 'ask-sdk-model';
+import {StateHelper} from '../helper/StateHelper';
 
 export class HandlerChecks {
 
@@ -38,6 +40,10 @@ export class HandlerChecks {
             }
             return true;
         });
+    }
+
+    public static isState(handlerInput : HandlerInput, state : string) : boolean {
+        return new StateHelper(handlerInput).getCurrentState() === state;
     }
 
 }

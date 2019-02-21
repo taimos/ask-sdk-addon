@@ -13,7 +13,7 @@
 
 #### NamedIntentRequestHandler
 
-When creation RequestHandler you can extend the `NamedIntentRequestHandler` and specify the 
+When creating RequestHandlers you can extend the `NamedIntentRequestHandler` and specify the 
 intent name instead of implementing the `canHandle` method.
 
 The following RequestHandler will handle requests for the intents `SomeIntent` and `FoobarIntent`.
@@ -40,6 +40,27 @@ import {NamedIntentRequestHandler} from 'ask-sdk-addon';
 class LaunchRequestHandler extends NamedIntentRequestHandler {
     constructor() {
         super('LaunchRequest');
+    }
+
+    public handle(handlerInput : HandlerInput) : Promise<Response> | Response {
+        return null;
+    }
+}
+```
+
+#### StatefulNamedIntentRequestHandler
+
+If you want different handlers depending on the current state of your skill, you can extend the `StatefulNamedIntentRequestHandler` and specify the 
+state and the intent name instead of implementing the `canHandle` method.
+
+The following RequestHandler will handle requests for the intent `SomeIntent` if the session attribute `_STATE` is `myState`.
+
+```typescript
+import {StatefulNamedIntentRequestHandler} from 'ask-sdk-addon';
+
+class SomeIntentRequestHandler extends StatefulNamedIntentRequestHandler {
+    constructor() {
+        super('myState', 'SomeIntent');
     }
 
     public handle(handlerInput : HandlerInput) : Promise<Response> | Response {
@@ -107,6 +128,29 @@ import {SlotHelper} from 'ask-sdk-addon';
 ```
 
 Using the `isConfirmed` method you can get the confirmation status of the intent and slots.
+
+#### StateHelper
+
+Use the StateHelper to manage a state machine for your Skill's intents. 
+Depending on the current state different handlers will be invoked for the same intent.
+
+Create an instance of the StateHelper with `new SlotHelper(handlerInput)`.
+
+You can now call `getCurrentState` to get the current state or `setState(state)` or `clearState()` to set the state for the next invocation.
+
+```typescript
+import {StateHelper} from 'ask-sdk-addon';
+
+    async handle(handlerInput) {
+        const stateHelper = new StateHelper(handlerInput);
+
+        const current = stateHelper.getCurrentState();
+        console.log(`Current state is: ${current}`);
+
+        stateHelper.setState('newState');        
+        // ... more code
+    }
+```
 
 #### ResponseHelper
 

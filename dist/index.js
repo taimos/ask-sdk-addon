@@ -16,6 +16,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var NamedIntentRequestHandler_1 = require("./handler/NamedIntentRequestHandler");
 exports.NamedIntentRequestHandler = NamedIntentRequestHandler_1.NamedIntentRequestHandler;
+var StatefulNamedIntentRequestHandler_1 = require("./handler/StatefulNamedIntentRequestHandler");
+exports.StatefulNamedIntentRequestHandler = StatefulNamedIntentRequestHandler_1.StatefulNamedIntentRequestHandler;
 var AudioPlayerRequestHandler_1 = require("./handler/AudioPlayerRequestHandler");
 exports.AudioPlayerRequestHandler = AudioPlayerRequestHandler_1.AudioPlayerRequestHandler;
 var APLUserEventRequestHandler_1 = require("./handler/APLUserEventRequestHandler");
@@ -24,6 +26,8 @@ var HandlerChecks_1 = require("./handler/HandlerChecks");
 exports.HandlerChecks = HandlerChecks_1.HandlerChecks;
 var SlotHelper_1 = require("./helper/SlotHelper");
 exports.SlotHelper = SlotHelper_1.SlotHelper;
+var StateHelper_1 = require("./helper/StateHelper");
+exports.StateHelper = StateHelper_1.StateHelper;
 var ResponseHelper_1 = require("./helper/ResponseHelper");
 exports.ResponseHelper = ResponseHelper_1.ResponseHelper;
 var InterfaceHelper_1 = require("./helper/InterfaceHelper");

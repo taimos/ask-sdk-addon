@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ResponseHelper | ask-sdk-addon</title>
+	<title>StatefulNamedIntentRequestHandler | ask-sdk-addon</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="responsehelper.html">ResponseHelper</a>
+					<a href="statefulnamedintentrequesthandler.html">StatefulNamedIntentRequestHandler</a>
 				</li>
 			</ul>
-			<h1>Class ResponseHelper</h1>
+			<h1>Class StatefulNamedIntentRequestHandler</h1>
 		</div>
 	</div>
 </header>
@@ -68,8 +68,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ResponseHelper</span>
+						<span class="target">StatefulNamedIntentRequestHandler</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">CustomSkillRequestHandler</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -79,22 +85,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="responsehelper.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="statefulnamedintentrequesthandler.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="responsehelper.html#responsebuilder" class="tsd-kind-icon">response<wbr>Builder</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statefulnamedintentrequesthandler.html#intentnames" class="tsd-kind-icon">intent<wbr>Names</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="statefulnamedintentrequesthandler.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="responsehelper.html#getresponse" class="tsd-kind-icon">get<wbr>Response</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="responsehelper.html#hintoneof" class="tsd-kind-icon">hint<wbr>One<wbr>Of</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="responsehelper.html#repromptoneof" class="tsd-kind-icon">reprompt<wbr>One<wbr>Of</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="responsehelper.html#speakoneof" class="tsd-kind-icon">speak<wbr>One<wbr>Of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statefulnamedintentrequesthandler.html#canhandle" class="tsd-kind-icon">can<wbr>Handle</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="statefulnamedintentrequesthandler.html#handle" class="tsd-kind-icon">handle</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,22 +111,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Response<wbr>Helper<span class="tsd-signature-symbol">(</span>responseBuilder<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ResponseBuilder</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Stateful<wbr>Named<wbr>Intent<wbr>Request<wbr>Handler<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>intentNames<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="statefulnamedintentrequesthandler.html" class="tsd-signature-type">StatefulNamedIntentRequestHandler</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/helper/ResponseHelper.ts#L20">helper/ResponseHelper.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/handler/StatefulNamedIntentRequestHandler.ts#L25">handler/StatefulNamedIntentRequestHandler.ts:25</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>responseBuilder: <span class="tsd-signature-type">ResponseBuilder</span></h5>
+									<h5>state: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>intentNames: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="statefulnamedintentrequesthandler.html" class="tsd-signature-type">StatefulNamedIntentRequestHandler</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -129,12 +137,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="responsebuilder" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> response<wbr>Builder</h3>
-					<div class="tsd-signature tsd-kind-icon">response<wbr>Builder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ResponseBuilder</span></div>
+					<a name="intentnames" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> intent<wbr>Names</h3>
+					<div class="tsd-signature tsd-kind-icon">intent<wbr>Names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/helper/ResponseHelper.ts#L20">helper/ResponseHelper.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/handler/StatefulNamedIntentRequestHandler.ts#L24">handler/StatefulNamedIntentRequestHandler.ts:24</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="state" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> state</h3>
+					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/handler/StatefulNamedIntentRequestHandler.ts#L25">handler/StatefulNamedIntentRequestHandler.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,108 +160,54 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getresponse" class="tsd-anchor"></a>
-					<h3>get<wbr>Response</h3>
+					<a name="canhandle" class="tsd-anchor"></a>
+					<h3>can<wbr>Handle</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Response<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span></li>
+						<li class="tsd-signature tsd-kind-icon">can<wbr>Handle<span class="tsd-signature-symbol">(</span>handlerInput<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HandlerInput</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/helper/ResponseHelper.ts#L60">helper/ResponseHelper.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/handler/StatefulNamedIntentRequestHandler.ts#L32">handler/StatefulNamedIntentRequestHandler.ts:32</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Returns the response object of the underlying ResponseBuilder</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Response</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>handlerInput: <span class="tsd-signature-type">HandlerInput</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">boolean</span>
+							</h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="hintoneof" class="tsd-anchor"></a>
-					<h3>hint<wbr>One<wbr>Of</h3>
+					<a name="handle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> handle</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">hint<wbr>One<wbr>Of<span class="tsd-signature-symbol">(</span>hints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></li>
+						<li class="tsd-signature tsd-kind-icon">handle<span class="tsd-signature-symbol">(</span>handlerInput<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HandlerInput</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Response</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/helper/ResponseHelper.ts#L51">helper/ResponseHelper.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/handler/StatefulNamedIntentRequestHandler.ts#L36">handler/StatefulNamedIntentRequestHandler.ts:36</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Has Alexa add one of the provided hints for display devices</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>hints: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>handlerInput: <span class="tsd-signature-type">HandlerInput</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="repromptoneof" class="tsd-anchor"></a>
-					<h3>reprompt<wbr>One<wbr>Of</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">reprompt<wbr>One<wbr>Of<span class="tsd-signature-symbol">(</span>speeches<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/helper/ResponseHelper.ts#L41">helper/ResponseHelper.ts:41</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Has Alexa reprompt with one of the provided speeches to the user</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>speeches: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="speakoneof" class="tsd-anchor"></a>
-					<h3>speak<wbr>One<wbr>Of</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">speak<wbr>One<wbr>Of<span class="tsd-signature-symbol">(</span>speeches<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/taimos/ask-sdk-addon/blob/1a1b603/lib/helper/ResponseHelper.ts#L31">helper/ResponseHelper.ts:31</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Has Alexa say one of the provided speeches to the user</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>speeches: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="responsehelper.html" class="tsd-signature-type">ResponseHelper</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Response</span>
+							</h4>
 						</li>
 					</ul>
 				</section>
@@ -286,42 +250,39 @@
 					<li class=" tsd-kind-class">
 						<a href="persistattributesinterceptor.html" class="tsd-kind-icon">Persist<wbr>Attributes<wbr>Interceptor</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="responsehelper.html" class="tsd-kind-icon">Response<wbr>Helper</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="responsehelper.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="responsehelper.html#responsebuilder" class="tsd-kind-icon">response<wbr>Builder</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="responsehelper.html#getresponse" class="tsd-kind-icon">get<wbr>Response</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="responsehelper.html#hintoneof" class="tsd-kind-icon">hint<wbr>One<wbr>Of</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="responsehelper.html#repromptoneof" class="tsd-kind-icon">reprompt<wbr>One<wbr>Of</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="responsehelper.html#speakoneof" class="tsd-kind-icon">speak<wbr>One<wbr>Of</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="slothelper.html" class="tsd-kind-icon">Slot<wbr>Helper</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="statehelper.html" class="tsd-kind-icon">State<wbr>Helper</a>
 					</li>
-					<li class=" tsd-kind-class">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
 						<a href="statefulnamedintentrequesthandler.html" class="tsd-kind-icon">Stateful<wbr>Named<wbr>Intent<wbr>Request<wbr>Handler</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="statefulnamedintentrequesthandler.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="statefulnamedintentrequesthandler.html#intentnames" class="tsd-kind-icon">intent<wbr>Names</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="statefulnamedintentrequesthandler.html#state" class="tsd-kind-icon">state</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="statefulnamedintentrequesthandler.html#canhandle" class="tsd-kind-icon">can<wbr>Handle</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="statefulnamedintentrequesthandler.html#handle" class="tsd-kind-icon">handle</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="temperatureunitinterceptor.html" class="tsd-kind-icon">Temperature<wbr>Unit<wbr>Interceptor</a>
 					</li>

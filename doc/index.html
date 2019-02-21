@@ -70,7 +70,7 @@
 				<h2 id="features">Features</h2>
 				<h3 id="handlers">Handlers</h3>
 				<h4 id="namedintentrequesthandler">NamedIntentRequestHandler</h4>
-				<p>When creation RequestHandler you can extend the <code>NamedIntentRequestHandler</code> and specify the
+				<p>When creating RequestHandlers you can extend the <code>NamedIntentRequestHandler</code> and specify the
 				intent name instead of implementing the <code>canHandle</code> method.</p>
 				<p>The following RequestHandler will handle requests for the intents <code>SomeIntent</code> and <code>FoobarIntent</code>.</p>
 				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
@@ -91,6 +91,22 @@
 <span class="hljs-keyword">class</span> LaunchRequestHandler <span class="hljs-keyword">extends</span> NamedIntentRequestHandler {
     <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">super</span>(<span class="hljs-string">'LaunchRequest'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+}
+</code></pre>
+				<h4 id="statefulnamedintentrequesthandler">StatefulNamedIntentRequestHandler</h4>
+				<p>If you want different handlers depending on the current state of your skill, you can extend the <code>StatefulNamedIntentRequestHandler</code> and specify the
+				state and the intent name instead of implementing the <code>canHandle</code> method.</p>
+				<p>The following RequestHandler will handle requests for the intent <code>SomeIntent</code> if the session attribute <code>_STATE</code> is <code>myState</code>.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {StatefulNamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+<span class="hljs-keyword">class</span> SomeIntentRequestHandler <span class="hljs-keyword">extends</span> StatefulNamedIntentRequestHandler {
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">'myState'</span>, <span class="hljs-string">'SomeIntent'</span>);
     }
 
     <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
@@ -146,6 +162,23 @@
     }
 </code></pre>
 				<p>Using the <code>isConfirmed</code> method you can get the confirmation status of the intent and slots.</p>
+				<h4 id="statehelper">StateHelper</h4>
+				<p>Use the StateHelper to manage a state machine for your Skill&#39;s intents.
+				Depending on the current state different handlers will be invoked for the same intent.</p>
+				<p>Create an instance of the StateHelper with <code>new SlotHelper(handlerInput)</code>.</p>
+				<p>You can now call <code>getCurrentState</code> to get the current state or <code>setState(state)</code> or <code>clearState()</code> to set the state for the next invocation.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {StateHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+
+    <span class="hljs-keyword">async</span> handle(handlerInput) {
+        <span class="hljs-keyword">const</span> stateHelper = <span class="hljs-keyword">new</span> StateHelper(handlerInput);
+
+        <span class="hljs-keyword">const</span> current = stateHelper.getCurrentState();
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Current state is: <span class="hljs-subst">${current}</span>`</span>);
+
+        stateHelper.setState(<span class="hljs-string">'newState'</span>);        
+        <span class="hljs-comment">// ... more code</span>
+    }
+</code></pre>
 				<h4 id="responsehelper">ResponseHelper</h4>
 				<p>Use the ResponseHelper to add additional features to skill responses.</p>
 				<p>Create an instance of the ResponseHelper with <code>new ResponseHelper(responseBuilder)</code>.</p>
@@ -256,10 +289,19 @@ handlerInput.attributesManager.getRequestAttributes().distanceUnits;
 						<a href="classes/slothelper.html" class="tsd-kind-icon">Slot<wbr>Helper</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/statehelper.html" class="tsd-kind-icon">State<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/statefulnamedintentrequesthandler.html" class="tsd-kind-icon">Stateful<wbr>Named<wbr>Intent<wbr>Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/temperatureunitinterceptor.html" class="tsd-kind-icon">Temperature<wbr>Unit<wbr>Interceptor</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/timezoneinterceptor.html" class="tsd-kind-icon">Time<wbr>Zone<wbr>Interceptor</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#state_property" class="tsd-kind-icon">STATE_<wbr>PROPERTY</a>
 					</li>
 				</ul>
 			</nav>

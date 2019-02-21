@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+const StateHelper_1 = require("../helper/StateHelper");
 class HandlerChecks {
     static isIntentRequest(requestEnvelope, ...intentNames) {
         return requestEnvelope.request.type === 'IntentRequest' && intentNames.indexOf(requestEnvelope.request.intent.name) >= 0;
@@ -41,6 +42,9 @@ class HandlerChecks {
             }
             return true;
         });
+    }
+    static isState(handlerInput, state) {
+        return new StateHelper_1.StateHelper(handlerInput).getCurrentState() === state;
     }
 }
 exports.HandlerChecks = HandlerChecks;
