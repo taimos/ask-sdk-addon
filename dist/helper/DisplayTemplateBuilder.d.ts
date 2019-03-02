@@ -32,5 +32,5 @@ export declare class DisplayTemplateBuilder {
      * @returns {Response}
      */
     getTemplate(): Template;
-    private initTextContent();
+    private initTextContent;
 }

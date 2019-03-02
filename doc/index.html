@@ -73,7 +73,7 @@
 				<p>When creating RequestHandlers you can extend the <code>NamedIntentRequestHandler</code> and specify the
 				intent name instead of implementing the <code>canHandle</code> method.</p>
 				<p>The following RequestHandler will handle requests for the intents <code>SomeIntent</code> and <code>FoobarIntent</code>.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 <span class="hljs-keyword">class</span> SomeIntentRequestHandler <span class="hljs-keyword">extends</span> NamedIntentRequestHandler {
     <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
@@ -83,10 +83,9 @@
     <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
-}
-</code></pre>
+}</code></pre>
 				<p>The following RequestHandler will handle LaunchRequests.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {NamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 <span class="hljs-keyword">class</span> LaunchRequestHandler <span class="hljs-keyword">extends</span> NamedIntentRequestHandler {
     <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
@@ -96,13 +95,12 @@
     <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
-}
-</code></pre>
+}</code></pre>
 				<h4 id="statefulnamedintentrequesthandler">StatefulNamedIntentRequestHandler</h4>
 				<p>If you want different handlers depending on the current state of your skill, you can extend the <code>StatefulNamedIntentRequestHandler</code> and specify the
 				state and the intent name instead of implementing the <code>canHandle</code> method.</p>
 				<p>The following RequestHandler will handle requests for the intent <code>SomeIntent</code> if the session attribute <code>_STATE</code> is <code>myState</code>.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {StatefulNamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {StatefulNamedIntentRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 <span class="hljs-keyword">class</span> SomeIntentRequestHandler <span class="hljs-keyword">extends</span> StatefulNamedIntentRequestHandler {
     <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
@@ -112,11 +110,10 @@
     <span class="hljs-keyword">public</span> handle(handlerInput : HandlerInput) : <span class="hljs-built_in">Promise</span>&lt;Response&gt; | Response {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
-}
-</code></pre>
+}</code></pre>
 				<h4 id="audioplayerrequesthandler">AudioPlayerRequestHandler</h4>
 				<p>You can extend the <code>AudioPlayerRequestHandler</code> and implement the methods to facilitate the processing of AudioPlayer events.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {AudioPlayerRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {AudioPlayerRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 <span class="hljs-keyword">class</span> TestHandler <span class="hljs-keyword">extends</span> AudioPlayerRequestHandler {
 
@@ -140,14 +137,13 @@
          <span class="hljs-comment">// Handle event</span>
     }
 
-}
-</code></pre>
+}</code></pre>
 				<h3 id="helper">Helper</h3>
 				<h4 id="slothelper">SlotHelper</h4>
 				<p>Use the SlotHelper to get slot values or entity resolutions from slots.</p>
 				<p>Create an instance of the SlotHelper with <code>new SlotHelper(requestEnvelope)</code>.</p>
 				<p>You can now call <code>getValue</code> or <code>resolveFirstValue</code> to get appropriate slot values.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SlotHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SlotHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
     <span class="hljs-keyword">async</span> handle({requestEnvelope}) {
         <span class="hljs-keyword">const</span> slotHelper = <span class="hljs-keyword">new</span> SlotHelper(requestEnvelope);
@@ -159,15 +155,14 @@
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Slot Value: <span class="hljs-subst">${value}</span>`</span>);
 
         <span class="hljs-comment">// ... more code</span>
-    }
-</code></pre>
+    }</code></pre>
 				<p>Using the <code>isConfirmed</code> method you can get the confirmation status of the intent and slots.</p>
 				<h4 id="statehelper">StateHelper</h4>
 				<p>Use the StateHelper to manage a state machine for your Skill&#39;s intents.
 				Depending on the current state different handlers will be invoked for the same intent.</p>
 				<p>Create an instance of the StateHelper with <code>new SlotHelper(handlerInput)</code>.</p>
 				<p>You can now call <code>getCurrentState</code> to get the current state or <code>setState(state)</code> or <code>clearState()</code> to set the state for the next invocation.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {StateHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {StateHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
     <span class="hljs-keyword">async</span> handle(handlerInput) {
         <span class="hljs-keyword">const</span> stateHelper = <span class="hljs-keyword">new</span> StateHelper(handlerInput);
@@ -177,13 +172,12 @@
 
         stateHelper.setState(<span class="hljs-string">'newState'</span>);        
         <span class="hljs-comment">// ... more code</span>
-    }
-</code></pre>
+    }</code></pre>
 				<h4 id="responsehelper">ResponseHelper</h4>
 				<p>Use the ResponseHelper to add additional features to skill responses.</p>
 				<p>Create an instance of the ResponseHelper with <code>new ResponseHelper(responseBuilder)</code>.</p>
 				<p>You can now call the additional methods for enhanced features.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {ResponseHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {ResponseHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
     <span class="hljs-keyword">async</span> handle({requestEnvelope, responseBuilder}) {
         <span class="hljs-keyword">const</span> responseHelper = <span class="hljs-keyword">new</span> ResponseHelper(responseBuilder);
@@ -191,12 +185,11 @@
         responseHelper.speakOneOf([<span class="hljs-string">'OutputSpeech 1'</span>, <span class="hljs-string">'OutputSpeech 2'</span>]);
 
         <span class="hljs-comment">// ... more code</span>
-    }
-</code></pre>
+    }</code></pre>
 				<h4 id="displaytemplatebuilder">DisplayTemplateBuilder</h4>
 				<p>Use the DisplayTemplateBuilder to ease the creation of RenderTemplates for display devices like Echo Show and Echo Spot.</p>
 				<p>Create an instance of the Builder with <code>new DisplayTemplateBuilder({type: &#39;BodyTemplate2&#39;})</code>.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {DisplayTemplateBuilder} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {DisplayTemplateBuilder} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 <span class="hljs-keyword">if</span> (DisplayTemplateBuilder.isDisplaySupported(handlerInput.requestEnvelope)) {
     <span class="hljs-keyword">const</span> builder : DisplayTemplateBuilder = <span class="hljs-keyword">new</span> DisplayTemplateBuilder({<span class="hljs-keyword">type</span>: <span class="hljs-string">'BodyTemplate2'</span>});
@@ -204,34 +197,30 @@
     builder.withPrimaryRichText(<span class="hljs-string">'&lt;i&gt;Some Text:&lt;/i&gt; Lorem ipsum'</span>);
     handlerInput.responseBuilder.addRenderTemplateDirective(builder.getTemplate());
 }
-
 </code></pre>
 				<h4 id="interfacehelper">InterfaceHelper</h4>
 				<p>The InterfaceHelper helps you determine which interfaces are supported by the calling device.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {InterfaceHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {InterfaceHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 InterfaceHelper.isAudioPlayerSupported(requestEnvelope);
 InterfaceHelper.isVideoPlayerSupported(requestEnvelope);
-InterfaceHelper.isDisplaySupported(requestEnvelope);
-</code></pre>
+InterfaceHelper.isDisplaySupported(requestEnvelope);</code></pre>
 				<h3 id="interceptor">Interceptor</h3>
 				<h4 id="logrequestinterceptor">LogRequestInterceptor</h4>
 				<p>This interceptor logs all incoming requests to the console</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
 <span class="hljs-keyword">import</span> {LogRequestInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
-SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> LogRequestInterceptor());
-</code></pre>
+SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> LogRequestInterceptor());</code></pre>
 				<h4 id="persistattributesinterceptor">PersistAttributesInterceptor</h4>
 				<p>This interceptor saves the persistent attributes to the data store</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
 <span class="hljs-keyword">import</span> {PersistAttributesInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
-SkillBuilders.custom().addResponseInterceptors(<span class="hljs-keyword">new</span> PersistAttributesInterceptor());
-</code></pre>
+SkillBuilders.custom().addResponseInterceptors(<span class="hljs-keyword">new</span> PersistAttributesInterceptor());</code></pre>
 				<h4 id="profileinterceptor">ProfileInterceptor</h4>
 				<p>These interceptors call the user profile service and populate request attributes</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
 <span class="hljs-keyword">import</span> {ProfileInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> TimeZoneInterceptor());
@@ -241,7 +230,6 @@ SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</sp
 handlerInput.attributesManager.getRequestAttributes().timeZone;
 handlerInput.attributesManager.getRequestAttributes().temperatureUnit;
 handlerInput.attributesManager.getRequestAttributes().distanceUnits;
-
 </code></pre>
 			</div>
 		</div>
