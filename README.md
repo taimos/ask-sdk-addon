@@ -1,6 +1,7 @@
 # Addon package for the Alexa Skills Kit SDK
 
 [![Build Status](https://travis-ci.org/taimos/ask-sdk-addon.svg?branch=master)](https://travis-ci.org/taimos/ask-sdk-addon)
+![Build Status](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZjZqRmZrL3diaXFLZHRFc3pIUERhQ2tGV09IbW5uYStyNTNrT3JkN0NGRHRjRlJsZm1jQk1nNEQ0Y1BQUThYOXJBQ3hJQk5KYlZ2MXpoMGJoWFl0akJ3PSIsIml2UGFyYW1ldGVyU3BlYyI6IkhobTRBUDEwM2JYQWZBeTUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 [![npm version](https://badge.fury.io/js/ask-sdk-addon.svg)](https://badge.fury.io/js/ask-sdk-addon)
 
 ## Installation
