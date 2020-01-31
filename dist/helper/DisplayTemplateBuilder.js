@@ -15,6 +15,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const InterfaceHelper_1 = require("./InterfaceHelper");
 class DisplayTemplateBuilder {
+    constructor(init) {
+        this.template = init;
+    }
     /**
      * Check if Display is supported by calling device
      * @param requestEnvelope
@@ -48,9 +51,6 @@ class DisplayTemplateBuilder {
                     return '&#039;';
             }
         });
-    }
-    constructor(init) {
-        this.template = init;
     }
     withToken(token) {
         this.template.token = token;

@@ -1,5 +1,5 @@
-import {AttributesManager} from 'ask-sdk-core';
-import {RequestEnvelope} from 'ask-sdk-model';
+import { AttributesManager } from 'ask-sdk-core';
+import { RequestEnvelope } from 'ask-sdk-model';
 
 export class AttributesManagerMock implements AttributesManager {
 
@@ -15,8 +15,8 @@ export class AttributesManagerMock implements AttributesManager {
     public getRequestAttributes() : { [key : string] : any; } {
         return this.requestAttributes;
     }
-    public getSessionAttributes() : { [key : string] : any; } {
-        return this.sessionAttributes;
+    public getSessionAttributes<T = { [key : string] : any; }>() : T {
+        return this.sessionAttributes as any;
     }
     public async getPersistentAttributes() : Promise<{ [key : string] : any; }> {
         return this.persistentAttributes;

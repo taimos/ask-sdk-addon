@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> ask-sdk-addon</h1>
+			<h1>ask-sdk-addon</h1>
 		</div>
 	</div>
 </header>
@@ -62,14 +62,25 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="addon-package-for-the-alexa-skills-kit-sdk">Addon package for the Alexa Skills Kit SDK</h1>
+				<a href="#addon-package-for-the-alexa-skills-kit-sdk" id="addon-package-for-the-alexa-skills-kit-sdk" style="color: inherit; text-decoration: none;">
+					<h1>Addon package for the Alexa Skills Kit SDK</h1>
+				</a>
 				<p><a href="https://travis-ci.org/taimos/ask-sdk-addon"><img src="https://travis-ci.org/taimos/ask-sdk-addon.svg?branch=master" alt="Build Status"></a>
+					<img src="https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZjZqRmZrL3diaXFLZHRFc3pIUERhQ2tGV09IbW5uYStyNTNrT3JkN0NGRHRjRlJsZm1jQk1nNEQ0Y1BQUThYOXJBQ3hJQk5KYlZ2MXpoMGJoWFl0akJ3PSIsIml2UGFyYW1ldGVyU3BlYyI6IkhobTRBUDEwM2JYQWZBeTUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master" alt="Build Status">
 				<a href="https://badge.fury.io/js/ask-sdk-addon"><img src="https://badge.fury.io/js/ask-sdk-addon.svg" alt="npm version"></a></p>
-				<h2 id="installation">Installation</h2>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
 				<p><code>npm install ask-sdk-addon</code></p>
-				<h2 id="features">Features</h2>
-				<h3 id="handlers">Handlers</h3>
-				<h4 id="namedintentrequesthandler">NamedIntentRequestHandler</h4>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h2>Features</h2>
+				</a>
+				<a href="#handlers" id="handlers" style="color: inherit; text-decoration: none;">
+					<h3>Handlers</h3>
+				</a>
+				<a href="#namedintentrequesthandler" id="namedintentrequesthandler" style="color: inherit; text-decoration: none;">
+					<h4>NamedIntentRequestHandler</h4>
+				</a>
 				<p>When creating RequestHandlers you can extend the <code>NamedIntentRequestHandler</code> and specify the
 				intent name instead of implementing the <code>canHandle</code> method.</p>
 				<p>The following RequestHandler will handle requests for the intents <code>SomeIntent</code> and <code>FoobarIntent</code>.</p>
@@ -96,7 +107,9 @@
         <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 }</code></pre>
-				<h4 id="statefulnamedintentrequesthandler">StatefulNamedIntentRequestHandler</h4>
+				<a href="#statefulnamedintentrequesthandler" id="statefulnamedintentrequesthandler" style="color: inherit; text-decoration: none;">
+					<h4>StatefulNamedIntentRequestHandler</h4>
+				</a>
 				<p>If you want different handlers depending on the current state of your skill, you can extend the <code>StatefulNamedIntentRequestHandler</code> and specify the
 				state and the intent name instead of implementing the <code>canHandle</code> method.</p>
 				<p>The following RequestHandler will handle requests for the intent <code>SomeIntent</code> if the session attribute <code>_STATE</code> is <code>myState</code>.</p>
@@ -111,7 +124,9 @@
         <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 }</code></pre>
-				<h4 id="audioplayerrequesthandler">AudioPlayerRequestHandler</h4>
+				<a href="#audioplayerrequesthandler" id="audioplayerrequesthandler" style="color: inherit; text-decoration: none;">
+					<h4>AudioPlayerRequestHandler</h4>
+				</a>
 				<p>You can extend the <code>AudioPlayerRequestHandler</code> and implement the methods to facilitate the processing of AudioPlayer events.</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {AudioPlayerRequestHandler} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
@@ -138,8 +153,12 @@
     }
 
 }</code></pre>
-				<h3 id="helper">Helper</h3>
-				<h4 id="slothelper">SlotHelper</h4>
+				<a href="#helper" id="helper" style="color: inherit; text-decoration: none;">
+					<h3>Helper</h3>
+				</a>
+				<a href="#slothelper" id="slothelper" style="color: inherit; text-decoration: none;">
+					<h4>SlotHelper</h4>
+				</a>
 				<p>Use the SlotHelper to get slot values or entity resolutions from slots.</p>
 				<p>Create an instance of the SlotHelper with <code>new SlotHelper(requestEnvelope)</code>.</p>
 				<p>You can now call <code>getValue</code> or <code>resolveFirstValue</code> to get appropriate slot values.</p>
@@ -157,7 +176,9 @@
         <span class="hljs-comment">// ... more code</span>
     }</code></pre>
 				<p>Using the <code>isConfirmed</code> method you can get the confirmation status of the intent and slots.</p>
-				<h4 id="statehelper">StateHelper</h4>
+				<a href="#statehelper" id="statehelper" style="color: inherit; text-decoration: none;">
+					<h4>StateHelper</h4>
+				</a>
 				<p>Use the StateHelper to manage a state machine for your Skill&#39;s intents.
 				Depending on the current state different handlers will be invoked for the same intent.</p>
 				<p>Create an instance of the StateHelper with <code>new SlotHelper(handlerInput)</code>.</p>
@@ -173,7 +194,9 @@
         stateHelper.setState(<span class="hljs-string">'newState'</span>);        
         <span class="hljs-comment">// ... more code</span>
     }</code></pre>
-				<h4 id="responsehelper">ResponseHelper</h4>
+				<a href="#responsehelper" id="responsehelper" style="color: inherit; text-decoration: none;">
+					<h4>ResponseHelper</h4>
+				</a>
 				<p>Use the ResponseHelper to add additional features to skill responses.</p>
 				<p>Create an instance of the ResponseHelper with <code>new ResponseHelper(responseBuilder)</code>.</p>
 				<p>You can now call the additional methods for enhanced features.</p>
@@ -186,7 +209,9 @@
 
         <span class="hljs-comment">// ... more code</span>
     }</code></pre>
-				<h4 id="displaytemplatebuilder">DisplayTemplateBuilder</h4>
+				<a href="#displaytemplatebuilder" id="displaytemplatebuilder" style="color: inherit; text-decoration: none;">
+					<h4>DisplayTemplateBuilder</h4>
+				</a>
 				<p>Use the DisplayTemplateBuilder to ease the creation of RenderTemplates for display devices like Echo Show and Echo Spot.</p>
 				<p>Create an instance of the Builder with <code>new DisplayTemplateBuilder({type: &#39;BodyTemplate2&#39;})</code>.</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {DisplayTemplateBuilder} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
@@ -198,27 +223,37 @@
     handlerInput.responseBuilder.addRenderTemplateDirective(builder.getTemplate());
 }
 </code></pre>
-				<h4 id="interfacehelper">InterfaceHelper</h4>
+				<a href="#interfacehelper" id="interfacehelper" style="color: inherit; text-decoration: none;">
+					<h4>InterfaceHelper</h4>
+				</a>
 				<p>The InterfaceHelper helps you determine which interfaces are supported by the calling device.</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {InterfaceHelper} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 InterfaceHelper.isAudioPlayerSupported(requestEnvelope);
 InterfaceHelper.isVideoPlayerSupported(requestEnvelope);
 InterfaceHelper.isDisplaySupported(requestEnvelope);</code></pre>
-				<h3 id="interceptor">Interceptor</h3>
-				<h4 id="logrequestinterceptor">LogRequestInterceptor</h4>
+				<a href="#interceptor" id="interceptor" style="color: inherit; text-decoration: none;">
+					<h3>Interceptor</h3>
+				</a>
+				<a href="#logrequestinterceptor" id="logrequestinterceptor" style="color: inherit; text-decoration: none;">
+					<h4>LogRequestInterceptor</h4>
+				</a>
 				<p>This interceptor logs all incoming requests to the console</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
 <span class="hljs-keyword">import</span> {LogRequestInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 SkillBuilders.custom().addRequestInterceptors(<span class="hljs-keyword">new</span> LogRequestInterceptor());</code></pre>
-				<h4 id="persistattributesinterceptor">PersistAttributesInterceptor</h4>
+				<a href="#persistattributesinterceptor" id="persistattributesinterceptor" style="color: inherit; text-decoration: none;">
+					<h4>PersistAttributesInterceptor</h4>
+				</a>
 				<p>This interceptor saves the persistent attributes to the data store</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
 <span class="hljs-keyword">import</span> {PersistAttributesInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
 
 SkillBuilders.custom().addResponseInterceptors(<span class="hljs-keyword">new</span> PersistAttributesInterceptor());</code></pre>
-				<h4 id="profileinterceptor">ProfileInterceptor</h4>
+				<a href="#profileinterceptor" id="profileinterceptor" style="color: inherit; text-decoration: none;">
+					<h4>ProfileInterceptor</h4>
+				</a>
 				<p>These interceptors call the user profile service and populate request attributes</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {SkillBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk'</span>;
 <span class="hljs-keyword">import</span> {ProfileInterceptor} <span class="hljs-keyword">from</span> <span class="hljs-string">'ask-sdk-addon'</span>;
@@ -288,8 +323,17 @@ handlerInput.attributesManager.getRequestAttributes().distanceUnits;
 					<li class=" tsd-kind-class">
 						<a href="classes/timezoneinterceptor.html" class="tsd-kind-icon">Time<wbr>Zone<wbr>Interceptor</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#listitem" class="tsd-kind-icon">List<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#state_property" class="tsd-kind-icon">STATE_<wbr>PROPERTY</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#template" class="tsd-kind-icon">Template</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#value" class="tsd-kind-icon">Value</a>
 					</li>
 				</ul>
 			</nav>
@@ -308,6 +352,7 @@ handlerInput.attributesManager.getRequestAttributes().distanceUnits;
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -356,7 +401,7 @@ handlerInput.attributesManager.getRequestAttributes().distanceUnits;
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
