@@ -27,8 +27,11 @@ export class StateHelper {
     }
 
     public getCurrentState() : string {
-        const attributes = this.handlerInput.attributesManager.getSessionAttributes();
-        return attributes.hasOwnProperty(STATE_PROPERTY) ? attributes[STATE_PROPERTY] : undefined;
+        if (this.handlerInput.requestEnvelope.session) {
+            const attributes = this.handlerInput.attributesManager.getSessionAttributes();
+            return attributes.hasOwnProperty(STATE_PROPERTY) ? attributes[STATE_PROPERTY] : undefined;
+        }
+        return undefined;
     }
 
     public setState(state : string) : void {

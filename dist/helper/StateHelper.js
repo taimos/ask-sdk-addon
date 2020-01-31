@@ -20,8 +20,11 @@ class StateHelper {
         this.handlerInput = handlerInput;
     }
     getCurrentState() {
-        const attributes = this.handlerInput.attributesManager.getSessionAttributes();
-        return attributes.hasOwnProperty(STATE_PROPERTY) ? attributes[STATE_PROPERTY] : undefined;
+        if (this.handlerInput.requestEnvelope.session) {
+            const attributes = this.handlerInput.attributesManager.getSessionAttributes();
+            return attributes.hasOwnProperty(STATE_PROPERTY) ? attributes[STATE_PROPERTY] : undefined;
+        }
+        return undefined;
     }
     setState(state) {
         const attributes = this.handlerInput.attributesManager.getSessionAttributes();
